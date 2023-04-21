@@ -1,0 +1,26 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "Simple web calculator.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Banach-B/calculator.git"
+  },
+  "keywords": [
+    "calculator",
+    "decimal.js"
+  ],
+  "author": "Banach-B",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Banach-B/calculator/issues"
+  },
+  "homepage": "https://github.com/Banach-B/calculator#readme",
+  "dependencies": {
+    "decimal.js": "^10.4.3"
+  }
+}
