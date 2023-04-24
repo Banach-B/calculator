@@ -65,3 +65,12 @@ const Display = {
         this.update();
     }
 }
+
+// Get DOM elements. 
+const allClearBtn = document.querySelector('[data-all-clear]');
+const deleteBtn = document.querySelector('[data-delete]');
+const equalsBtn = document.querySelector('[data-equals]');
+const displayCurrent = document.querySelector('.display-current');
+const displayPrevious = document.querySelector('.display-previous');
+const numberBtn = document.querySelectorAll('[data-number]');
+const operationBtn = document.querySelectorAll('[data-operand]');
