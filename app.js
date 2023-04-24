@@ -66,6 +66,10 @@ const Display = {
     }
 }
 
+let previousNumber = '';
+let currentNumber = '';
+let currentOperation = '';
+
 // Get DOM elements. 
 const allClearBtn = document.querySelector('[data-all-clear]');
 const deleteBtn = document.querySelector('[data-delete]');
