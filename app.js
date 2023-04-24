@@ -41,4 +41,27 @@ const Calculator = {
         return result;
     }
 }
+// Define display object.
+const Display = {
 
+    // Method to update the current number on display.
+    updateCurrent: function () {
+        displayCurrent.textContent = currentNumber;
+    },
+    // Method to update the previous number and operation on display/
+    updatePrevious: function () {
+        displayPrevious.textContent = previousNumber + ' ' + currentOperation;
+    },
+    // Method to update both current and previous numbers on display.
+    update: function () {
+        this.updateCurrent()
+        this.updatePrevious()
+    },
+    // Method to clear the display and reset variables. 
+    clear: function () {
+        currentNumber = '';
+        previousNumber = '';
+        currentOperation = '';
+        this.update();
+    }
+}
