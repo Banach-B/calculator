@@ -92,7 +92,8 @@ deleteBtn.addEventListener('click', () => {
 equalsBtn.addEventListener('click', () => {
     // Prevents from division by zero.
     if (currentOperation === '/' && currentNumber === '0') return;
-    if (currentNumber.length === 0) return;
+    // Prevents from calculation without number and operation symbol. 
+    if (currentNumber.length === 0 || currentOperation === '') return;
     previousNumber = Calculator.calculate(previousNumber, currentOperation, currentNumber);
     currentNumber = '';
     currentOperation = '';
