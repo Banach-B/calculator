@@ -74,3 +74,63 @@ const displayCurrent = document.querySelector('.display-current');
 const displayPrevious = document.querySelector('.display-previous');
 const numberBtn = document.querySelectorAll('[data-number]');
 const operationBtn = document.querySelectorAll('[data-operand]');
+
+// Event listeners
+allClearBtn.addEventListener('click', () => {
+    Display.clear()
+});
+
+deleteBtn.addEventListener('click', () => {
+    currentNumber = currentNumber.slice(0, -1);
+    Display.update();
+});
+
+equalsBtn.addEventListener('click', () => {
+    // Prevents from division by zero.
+    if (currentOperation === '/' && currentNumber === '0') return;
+    if (currentNumber.length === 0) return;
+    previousNumber = Calculator.calculate(previousNumber, currentOperation, currentNumber);
+    currentNumber = '';
+    currentOperation = '';
+    Display.update();
+});
+
+numberBtn.forEach(element => {
+    element.addEventListener('click', () => {
+        const newNumber = event.target.textContent.toString();
+        // Allows only one comma in a number.
+        if (currentNumber.includes('.') && newNumber === '.') return;
+        if (currentNumber.length === 0 && newNumber === '.') { currentNumber += '0' };
+        currentNumber += newNumber;
+        Display.update();
+    });
+});
+
+operationBtn.forEach(element => {
+    element.addEventListener('click', () => {
+        let operation = event.target.textContent;
+        // Prevents from division by zero.
+        if (currentOperation === '/' && currentNumber === '0') return;
+        // Doesn't allow to select operation without number to operate on.
+        if (currentNumber.length === 0 && previousNumber.length === 0) return;
+        if (currentNumber.length !== 0 && previousNumber.length === 0) {
+            previousNumber = currentNumber;
+            currentNumber = '';
+            currentOperation = operation;
+            Display.update();
+        }
+        if (currentNumber.length === 0 && previousNumber.length !== 0) {
+            currentOperation = operation;
+            Display.update();
+        }
+        if (currentNumber.length !== 0 && previousNumber.length !== 0) {
+            previousNumber = Calculator.calculate(previousNumber, currentOperation, currentNumber);
+            currentNumber = '';
+            currentOperation = '';
+            Display.update();
+            currentOperation = operation;
+            Display.update();
+        }
+    });
+});
+
