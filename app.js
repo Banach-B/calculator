@@ -105,6 +105,7 @@ numberBtn.forEach(element => {
         // Allows only one comma in a number.
         if (currentNumber.includes('.') && newNumber === '.') return;
         if (currentNumber.length === 0 && newNumber === '.') { currentNumber += '0' };
+        if (previousNumber.length !== 0 && currentOperation.length === 0) return;
         currentNumber += newNumber;
         Display.update();
     });
